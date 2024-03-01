@@ -100,7 +100,7 @@ $(document).ready(function(){
     public function send_mail($email, $message, $subject) {
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= 'From: Netercorp<support@netercorp.org>' . "\r\n";
+        $headers .= 'From: Golden Stone<support@goldenstonebanking.online>' . "\r\n";
         mail($email,$subject,$message,$headers);
     }
 }
