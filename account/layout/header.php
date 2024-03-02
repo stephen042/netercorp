@@ -12,6 +12,7 @@ $title = $page['url_name'];
 
 $pageTitle = $title;
 $BANK_PHONE = $page['url_tel'];
+$APP_URL = APP_URL;
 
 $title = new pageTitle();
 $email_message = new message();

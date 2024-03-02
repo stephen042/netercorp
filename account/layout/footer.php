@@ -1,16 +1,6 @@
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/643c087731ebfa0fe7f89ad8/1gu58256j';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+<!--Start of tidio Script-->
+<script src="//code.tidio.co/kfbwher8c2u39zo5o9pnxxcx1aunk8o3.js" async></script>
+<!--End of tidio Script-->
 <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
 <script src="./bootstrap/js/popper.min.js"></script>
 <script src="./bootstrap/js/bootstrap.min.js"></script>
@@ -36,23 +26,23 @@ s0.parentNode.insertBefore(s1,s0);
 <script src="./plugins/sweetalerts/custom-sweetalert.js"></script>
 <!-- END THEME GLOBAL STYLE -->
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $(".numpad").hide();
-        $('.input').click(function(){
+        $('.input').click(function() {
             $('.numpad').fadeToggle('fast');
         });
 
-        $('.del').click(function(){
-            $('.input').val($('.input').val().substring(0,$('.input').val().length - 1));
+        $('.del').click(function() {
+            $('.input').val($('.input').val().substring(0, $('.input').val().length - 1));
         });
-        $('.faq').click(function(){
+        $('.faq').click(function() {
             alert("Enter Your OTP Sent to you ");
         })
-        $('.shuffle').click(function(){
+        $('.shuffle').click(function() {
             $('.input').val($('.input').val() + $(this).text());
             $('.shuffle').shuffle();
         });
-        (function($){
+        (function($) {
 
             $.fn.shuffle = function() {
 
@@ -60,14 +50,14 @@ s0.parentNode.insertBefore(s1,s0);
                     getRandom = function(max) {
                         return Math.floor(Math.random() * max);
                     },
-                    shuffled = $.map(allElems, function(){
+                    shuffled = $.map(allElems, function() {
                         var random = getRandom(allElems.length),
                             randEl = $(allElems[random]).clone(true)[0];
                         allElems.splice(random, 1);
                         return randEl;
                     });
 
-                this.each(function(i){
+                this.each(function(i) {
                     $(this).replaceWith($(shuffled[i]));
                 });
 
@@ -88,4 +78,5 @@ s0.parentNode.insertBefore(s1,s0);
     });
 </script>
 </body>
+
 </html>

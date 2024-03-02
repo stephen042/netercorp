@@ -27,7 +27,7 @@ if(isset($_POST['regSubmit'])){
     $ssn = $_POST['ssn'];
     $confirm_ssn = $_POST['confirm-ssn'];
     $acct_dob = $_POST['dob'];
-     $acct_pin = inputValidation($_POST['acct_pin']);
+    $acct_pin = inputValidation($_POST['acct_pin']);
 
 
 

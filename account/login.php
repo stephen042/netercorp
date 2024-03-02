@@ -99,7 +99,7 @@ if(isset($_POST['login'])){
                         // $APP_URL = APP_URL;
                         $user_email = $user['acct_email'];
                
-                        $message = $sendMail->LoginMsg($full_name, $device, $ipAddress, $nowDate, $APP_NAME);
+                        $message = $sendMail->LoginMsg($full_name, $device, $ipAddress, $nowDate, $APP_NAME, WEB_URL, $BANK_PHONE);
               
           
                         $subject = "Login Notification". "-". $APP_NAME;
@@ -152,7 +152,6 @@ if(isset($_POST['login'])){
                 <div class="form-content">
 
                     <h1 class="">Sign In</h1>
-                   
                     <p class="">Log in to your account to continue.</p>
                  <!--   <img src="./assets/settings/<?=$page['image']?>" class="navbar-logo" alt="logo" width="20%"> -->
 
@@ -179,7 +178,10 @@ if(isset($_POST['login'])){
                                     <button type="submit" class="btn btn-primary" name="login" value="">Log In</button>
                                 </div>
                             </div>
-                            <a href="../index.html">Go to Home</a>
+                            <hr>
+                            <a href="../index.html" class="border border-primary badge badge-info">
+                                <- Go to Home
+                            </a>
                         </div>
                     </form>
 

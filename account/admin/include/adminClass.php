@@ -4,11 +4,11 @@ use PHPMailer\PHPMailer\PHPMailer;
 //const APP_NAME = "Bank Pro";
 
 const ENV = 'online';
-define("BANK_PHONE", "+2348114313795‬");
+define("BANK_PHONE", "+1469 218-9994‬");
 if (ENV == "online"){
-    define("APP_URL", "https://netercorp.org/account");
+    define("APP_URL", "https://goldenstonefinance.online/account");
 }else{
-    define("APP_URL", "https://netercorp.org/account");
+    define("APP_URL", "https://goldenstonefinance.online/account");
 }
 
 class message{

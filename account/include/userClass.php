@@ -1,13 +1,17 @@
 <?php
 include 'vendor/autoload.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
+
 require_once('config.php');
 
 
-class USER{
+class USER
+{
     private $conn;
 
-    public function add_transaction($data){
+    public function add_transaction($data)
+    {
         $amount = $data['amount'];
         $acct_id = $data['acct_id'];
         $image = $data['image'];
@@ -21,8 +25,10 @@ class USER{
 }
 
 //MESSAGE & EMAIL CONFIGURATION FOR USERS
-class message{
-    public function loginerrorMsg($type,$msg){
+class message
+{
+    public function loginerrorMsg($type, $msg)
+    {
         return '<script type="text/javascript">
 
 $(document).ready(function(){
@@ -39,7 +45,8 @@ $(document).ready(function(){
     }
 
     //PASSWORD ERROR
-    public function passworderrorMsg(){
+    public function passworderrorMsg()
+    {
         return '<script type="text/javascript">
 
 $(document).ready(function(){
@@ -56,7 +63,8 @@ $(document).ready(function(){
     }
 
     //DEPOSIT MESSAGE
-    public function depositMsg(){
+    public function depositMsg()
+    {
         return '<script type="text/javascript">
 $(document).ready(function(){
      swal({
@@ -71,51 +79,56 @@ $(document).ready(function(){
 
     //EMAIL CONFIGURATION
 
-//     public function send_mail($email, $message, $subject){
-// //        require_once "./mailer/PHPMailer.php";
-// //        require_once "./mailer/SMTP.php";
-// //        require_once "./mailer/Exception.php";
+    //     public function send_mail($email, $message, $subject){
+    // //        require_once "./mailer/PHPMailer.php";
+    // //        require_once "./mailer/SMTP.php";
+    // //        require_once "./mailer/Exception.php";
 
-//         $mail = new PHPMailer();
-//         //SMTP Settings (use default cpanel email account)
-//         $mail->isSMTP();
-//         $mail->Host = "netercorp.org"; //
-//         $mail->SMTPAuth = true;
-//         $mail->Username = "support@netercorp.org"; // Default cpanel email account
-//         $mail->Password = '@@mailpass##'; // Default cpanel email password
-//         $mail->Port = 465; // 587
-//         $mail->SMTPSecure = "ssl"; // tls
+    //         $mail = new PHPMailer();
+    //         //SMTP Settings (use default cpanel email account)
+    //         $mail->isSMTP();
+    //         $mail->Host = "netercorp.org"; //
+    //         $mail->SMTPAuth = true;
+    //         $mail->Username = "support@netercorp.org"; // Default cpanel email account
+    //         $mail->Password = '@@mailpass##'; // Default cpanel email password
+    //         $mail->Port = 465; // 587
+    //         $mail->SMTPSecure = "ssl"; // tls
 
-//         //Email Settings
-//         $mail->isHTML(true);
-//         $mail->setFrom('support@netercorp.org','Netercorp'); // Email address/ Bank bane shown to reciever
-//         $mail->addAddress($email);
-//         $mail->AddReplyTo("support@netercorp.org", "Netercorp"); // Email address/ Bank bane shown to reciever
-//         $mail->Subject = $subject;
-//         $mail->MsgHTML($message);
-//         $mail->Send();
+    //         //Email Settings
+    //         $mail->isHTML(true);
+    //         $mail->setFrom('support@netercorp.org','Netercorp'); // Email address/ Bank bane shown to reciever
+    //         $mail->addAddress($email);
+    //         $mail->AddReplyTo("support@netercorp.org", "Netercorp"); // Email address/ Bank bane shown to reciever
+    //         $mail->Subject = $subject;
+    //         $mail->MsgHTML($message);
+    //         $mail->Send();
 
-//     }
-    
-    public function send_mail($email, $message, $subject) {
+    //     }
+
+    public function send_mail($email, $message, $subject)
+    {
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= 'From: Golden Stone<support@goldenstonebanking.online>' . "\r\n";
-        mail($email,$subject,$message,$headers);
+        $headers .= 'From: Golden Stone<support@goldenstonefinance.online>' . "\r\n";
+        mail($email, $subject, $message, $headers);
     }
 }
 
 
 //TITLE NAME
-class pageTitle{
+class pageTitle
+{
     public $dashboard = 'Dashboard';
-    public function getDashboard(){
+    public function getDashboard()
+    {
         return $this->dashboard;
     }
 }
 
-class emailMessage{
-    public function depositMsg($currency,$amount,$crypto_name,$fullName,$trans_id,$APP_NAME){
+class emailMessage
+{
+    public function depositMsg($currency, $amount, $crypto_name, $fullName, $trans_id, $APP_NAME)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -316,9 +329,9 @@ class emailMessage{
 </body>
 
 </html>";
-
     }
-    public function domTrans($currency, $amount, $fullName,$refrence_id,$bank_name,$acct_name,$acct_number,$trans_status,$trans_type,$created_at,$availableBalance,$APP_NAME){
+    public function domTrans($currency, $amount, $fullName, $refrence_id, $bank_name, $acct_name, $acct_number, $trans_status, $trans_type, $created_at, $availableBalance, $APP_NAME)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -531,9 +544,10 @@ class emailMessage{
 
 </html>";
     }
-    
-    
-     public function LoginMsg($full_name, $device, $ipAddress, $nowDate, $APP_NAME){
+
+
+    public function LoginMsg($full_name, $device, $ipAddress, $nowDate, $APP_NAME, $APP_URL, $BANK_PHONE)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -665,8 +679,8 @@ class emailMessage{
                 <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                     <tr>
                         <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-                            <p style='margin: 0;'>Hello, $fullName </p><br>
-                            <p style='margin: 0;'>we notice you just login your account from an unautorized browser.</p><br>
+                            <p style='margin: 0;'>Hello, $full_name </p><br>
+                            <p style='margin: 0;'>we notice you just login your account from an unauthorized browser.</p><br>
 
                     
 
@@ -737,11 +751,11 @@ class emailMessage{
 </body>
 
 </html>";
-
     }
 
 
-    public function wireTransfer($currency,$amount,$crypto_name,$fullName,$APP_NAME){
+    public function wireTransfer($currency, $amount, $crypto_name, $fullName, $APP_NAME)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -929,7 +943,8 @@ class emailMessage{
 
 </html>";
     }
-    public function debitTransaction($currency,$amount,$crypto_name,$fullName,$APP_NAME){
+    public function debitTransaction($currency, $amount, $crypto_name, $fullName, $APP_NAME)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -1117,7 +1132,8 @@ class emailMessage{
 
 </html>";
     }
-    public function creditTransaction($currency,$amount,$crypto_name,$fullName,$APP_NAME){
+    public function creditTransaction($currency, $amount, $crypto_name, $fullName, $APP_NAME)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -1305,7 +1321,8 @@ class emailMessage{
 
 </html>";
     }
-    public function pinRequest($currency,$amount,$fullName,$code,$APP_NAME){
+    public function pinRequest($currency, $amount, $fullName, $code, $APP_NAME)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -1485,7 +1502,8 @@ class emailMessage{
 </html>";
     }
 
-    public function otpRequest($fullName,$code,$APP_NAME){
+    public function otpRequest($fullName, $code, $APP_NAME)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -1665,7 +1683,8 @@ class emailMessage{
 </html>";
     }
 
-    public function otpRequestLogin($fullName,$code,$APP_NAME){
+    public function otpRequestLogin($fullName, $code, $APP_NAME)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -1844,7 +1863,8 @@ class emailMessage{
 
 </html>";
     }
-    public function regMsgUser($fullName,$APP_NAME,$APP_URL,$acctno,$password,$pin){
+    public function regMsgUser($fullName, $APP_NAME, $APP_URL, $acctno, $password, $pin)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -1983,7 +2003,7 @@ class emailMessage{
                 
                     <tr>
                         <td bgcolor='#ffffff' align='center' style='padding: 0px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-                            <p style='margin: 0;'>For more detailed information about any of our products or services, please refer to our website, <a href='$APP_URL'>$APP_URL</a>, or visit any of our convenient locations.</p>
+                            <p style='margin: 0;'>For more detailed information about any of our products or services, please refer to our website <a href='$APP_URL'>$APP_URL</a>, or visit any of our convenient locations.</p>
                         </td>
                     </tr>
                     <tr>
@@ -2021,10 +2041,5 @@ class emailMessage{
 </body>
 
 </html>";
-
     }
-
-
 }
-
-

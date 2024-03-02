@@ -43,21 +43,9 @@
 </div>
 </div>
 <!-- END MAIN CONTAINER -->
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API = Tawk_API || {},
-        Tawk_LoadStart = new Date();
-    (function() {
-        var s1 = document.createElement("script"),
-            s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/643c087731ebfa0fe7f89ad8/1gu58256j';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-    })();
-</script>
-<!--End of Tawk.to Script-->
+<!--Start of tidio Script-->
+<script src="//code.tidio.co/kfbwher8c2u39zo5o9pnxxcx1aunk8o3.js" async></script>
+<!--End of tidio Script-->
 <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
 <!--<script src="../assets/js/libs/jquery-3.1.1.min.js"></script>-->
 <script src="../bootstrap/js/popper.min.js"></script>
@@ -131,22 +119,6 @@
         $('.toast').toast('show');
     }
 </script>
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API = Tawk_API || {},
-        Tawk_LoadStart = new Date();
-    (function() {
-        var s1 = document.createElement("script"),
-            s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = '<?= $page['livechat'] ?>';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-    })();
-</script>
-<!--End of Tawk.to Script-->
 
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 

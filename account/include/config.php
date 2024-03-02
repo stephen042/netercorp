@@ -1,8 +1,8 @@
 <?php
 
-define("WEB_TITLE","Golden Stone Bank"); // Bank Name
-define("WEB_URL","https://goldenstonebanking.online/account"); // No Ending splash
-define("WEB_EMAIL", "support@goldenstonebanking.online"); // Your Website Email
+define("WEB_TITLE","Golden Stone Finance"); // Bank Name
+define("WEB_URL","https://goldenstonefinance.online/account"); // No Ending splash
+define("WEB_EMAIL", "support@goldenstonefinance.online"); // Your Website Email
 
 $web_url = WEB_URL;
 
