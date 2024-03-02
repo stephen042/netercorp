@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Aug 14, 2023 at 05:32 PM
--- Server version: 5.7.42
--- PHP Version: 8.1.16
+-- Host: localhost:3308
+-- Generation Time: Mar 02, 2024 at 01:28 PM
+-- Server version: 8.3.0
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `yaqdrtbe_db`
+-- Database: `netercorp`
 --
 
 -- --------------------------------------------------------
@@ -28,20 +28,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
-  `firstname` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `lastname` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `image` text COLLATE utf8_unicode_ci,
-  `admin_email` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `admin_password` varchar(200) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `id` int NOT NULL,
+  `firstname` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `lastname` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `image` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `admin_email` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `admin_password` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `firstname`, `lastname`, `image`, `admin_email`, `admin_password`) VALUES
-(1, '', 'Admin', 'jamesavatar.png', 'admin@netercorp.org', 'rv9oU.s8c3JfY');
+(1, '', 'Admin', 'jamesavatar.png', 'admin@goldenstone.online', '$2y$10$zfj2exOs9sT9IJv3qGl/reczotOimfIedXGe.ySadMRjxyWS/UxeC');
 
 -- --------------------------------------------------------
 
@@ -50,10 +50,10 @@ INSERT INTO `admin` (`id`, `firstname`, `lastname`, `image`, `admin_email`, `adm
 --
 
 CREATE TABLE `audit_logs` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `device` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ipAddress` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `device` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `ipAddress` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `datenow` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -79,7 +79,20 @@ INSERT INTO `audit_logs` (`id`, `user_id`, `device`, `ipAddress`, `datenow`) VAL
 (15, 4, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/116.0', '102.91.5.90', '2023-08-13 04:05:35'),
 (16, 5, 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.2 Mobile/15E148 Safari/604.1', '197.210.71.140', '2023-08-13 04:52:17'),
 (17, 2, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/116.0', '105.112.211.3', '2023-08-14 10:35:48'),
-(18, 2, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/116.0', '105.112.211.249', '2023-08-14 13:55:47');
+(18, 2, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/116.0', '105.112.211.249', '2023-08-14 13:55:47'),
+(19, 2, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', '::1', '2024-03-01 07:08:37'),
+(20, 2, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', '::1', '2024-03-01 09:44:04'),
+(21, 2, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', '127.0.0.1', '2024-03-01 14:03:35'),
+(22, 2, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', '127.0.0.1', '2024-03-01 14:49:03'),
+(23, 2, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', '127.0.0.1', '2024-03-02 10:28:41'),
+(24, 2, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', '127.0.0.1', '2024-03-02 10:35:54'),
+(25, 6, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', '127.0.0.1', '2024-03-02 11:17:25'),
+(26, 6, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', '127.0.0.1', '2024-03-02 11:39:47'),
+(27, 6, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', '127.0.0.1', '2024-03-02 11:40:22'),
+(28, 6, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', '127.0.0.1', '2024-03-02 11:40:56'),
+(29, 2, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', '127.0.0.1', '2024-03-02 11:41:08'),
+(30, 6, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', '127.0.0.1', '2024-03-02 11:43:37'),
+(31, 6, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', '127.0.0.1', '2024-03-02 11:47:06');
 
 -- --------------------------------------------------------
 
@@ -88,18 +101,18 @@ INSERT INTO `audit_logs` (`id`, `user_id`, `device`, `ipAddress`, `datenow`) VAL
 --
 
 CREATE TABLE `card` (
-  `id` int(11) NOT NULL,
-  `seria_key` text COLLATE utf8_unicode_ci NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `card_number` text COLLATE utf8_unicode_ci NOT NULL,
-  `card_name` text COLLATE utf8_unicode_ci NOT NULL,
-  `card_expiration` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `card_security` text COLLATE utf8_unicode_ci NOT NULL,
+  `id` int NOT NULL,
+  `seria_key` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `user_id` int NOT NULL,
+  `card_number` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `card_name` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `card_expiration` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `card_security` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `card_limit` double NOT NULL DEFAULT '5000',
   `card_limit_remain` double NOT NULL DEFAULT '5000',
-  `card_status` int(11) NOT NULL DEFAULT '2' COMMENT '1=Active,2=Process,3=hold, 4=PAUSE',
+  `card_status` int NOT NULL DEFAULT '2' COMMENT '1=Active,2=Process,3=hold, 4=PAUSE',
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `card`
@@ -116,14 +129,14 @@ INSERT INTO `card` (`id`, `seria_key`, `user_id`, `card_number`, `card_name`, `c
 --
 
 CREATE TABLE `card_request` (
-  `id` int(11) NOT NULL,
-  `reference_id` text COLLATE utf8_unicode_ci NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `card_type` text COLLATE utf8_unicode_ci NOT NULL,
-  `card_reason` text COLLATE utf8_unicode_ci NOT NULL,
-  `card_request_status` int(11) NOT NULL DEFAULT '2',
+  `id` int NOT NULL,
+  `reference_id` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `user_id` int NOT NULL,
+  `card_type` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `card_reason` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `card_request_status` int NOT NULL DEFAULT '2',
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `card_request`
@@ -140,11 +153,11 @@ INSERT INTO `card_request` (`id`, `reference_id`, `user_id`, `card_type`, `card_
 --
 
 CREATE TABLE `crypto_currency` (
-  `id` int(11) NOT NULL,
-  `crypto_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `wallet_address` text COLLATE utf8_unicode_ci NOT NULL,
+  `id` int NOT NULL,
+  `crypto_name` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `wallet_address` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `crypto_currency`
@@ -163,16 +176,16 @@ INSERT INTO `crypto_currency` (`id`, `crypto_name`, `wallet_address`, `created_a
 --
 
 CREATE TABLE `deposit` (
-  `d_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `refrence_id` text COLLATE utf8_unicode_ci NOT NULL,
-  `image` text COLLATE utf8_unicode_ci,
+  `d_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `refrence_id` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `image` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
   `amount` double NOT NULL,
-  `wallet_address` text COLLATE utf8_unicode_ci NOT NULL,
-  `crypto_id` int(11) NOT NULL,
-  `crypto_status` int(15) NOT NULL DEFAULT '0',
+  `wallet_address` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `crypto_id` int NOT NULL,
+  `crypto_status` int NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -181,19 +194,19 @@ CREATE TABLE `deposit` (
 --
 
 CREATE TABLE `domestic_transfer` (
-  `dom_id` int(11) NOT NULL,
-  `acct_id` int(11) DEFAULT NULL,
-  `refrence_id` text COLLATE utf8_unicode_ci NOT NULL,
+  `dom_id` int NOT NULL,
+  `acct_id` int DEFAULT NULL,
+  `refrence_id` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `amount` double NOT NULL DEFAULT '0',
-  `bank_name` text COLLATE utf8_unicode_ci,
-  `acct_name` text COLLATE utf8_unicode_ci,
-  `acct_number` int(15) NOT NULL,
-  `trans_type` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'domestic transfer',
-  `acct_type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `acct_remarks` text COLLATE utf8_unicode_ci,
-  `dom_status` int(11) NOT NULL DEFAULT '0',
+  `bank_name` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_name` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_number` int NOT NULL,
+  `trans_type` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL DEFAULT 'domestic transfer',
+  `acct_type` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `acct_remarks` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `dom_status` int NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `domestic_transfer`
@@ -213,15 +226,15 @@ INSERT INTO `domestic_transfer` (`dom_id`, `acct_id`, `refrence_id`, `amount`, `
 --
 
 CREATE TABLE `loan` (
-  `loan_id` int(11) NOT NULL,
-  `loan_reference_id` text COLLATE utf8_unicode_ci,
-  `acct_id` int(11) NOT NULL,
+  `loan_id` int NOT NULL,
+  `loan_reference_id` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_id` int NOT NULL,
   `amount` double DEFAULT '0',
-  `loan_remarks` text COLLATE utf8_unicode_ci NOT NULL,
-  `loan_status` int(11) NOT NULL DEFAULT '0',
-  `loan_message` text COLLATE utf8_unicode_ci,
+  `loan_remarks` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `loan_status` int NOT NULL DEFAULT '0',
+  `loan_message` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -230,12 +243,12 @@ CREATE TABLE `loan` (
 --
 
 CREATE TABLE `settings` (
-  `id` int(11) NOT NULL,
-  `image` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `about_us` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `url_name` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `id` int NOT NULL,
+  `image` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `about_us` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `url_name` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `url_tel` varchar(15) DEFAULT NULL,
-  `url_email` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `url_email` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `trans_limit_min` double DEFAULT NULL,
   `trans_limit_max` double DEFAULT NULL,
   `livechat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Live Widget'
@@ -246,7 +259,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `image`, `about_us`, `url_name`, `url_tel`, `url_email`, `trans_limit_min`, `trans_limit_max`, `livechat`) VALUES
-(1, 'favicon.png', 'Online Banking With Cot, Imf, Tax & Token Code', 'Netercorp', '08114313795', 'support@netercorp.org', 500, 500000, 'https://embed.tawk.to/6034b681918aa2612741a9d6/1ev6uhr08');
+(1, 'favicon.png', 'Online Banking With Cot, Imf, Tax & Token Code', 'Goldenstone', '+1469 218-9994', 'support@goldenstonefinance.online', 500, 500000, 'https://code.tidio.co/kfbwher8c2u39zo5o9pnxxcx1aunk8o3.js');
 
 -- --------------------------------------------------------
 
@@ -255,23 +268,23 @@ INSERT INTO `settings` (`id`, `image`, `about_us`, `url_name`, `url_tel`, `url_e
 --
 
 CREATE TABLE `temp_trans` (
-  `wire_id` int(11) NOT NULL,
-  `acct_id` int(11) DEFAULT NULL,
-  `trans_id` text COLLATE utf8_unicode_ci NOT NULL,
+  `wire_id` int NOT NULL,
+  `acct_id` int DEFAULT NULL,
+  `trans_id` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `amount` double NOT NULL DEFAULT '0',
-  `bank_name` text COLLATE utf8_unicode_ci,
-  `acct_name_id` text COLLATE utf8_unicode_ci,
-  `acct_number` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `trans_type` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'wire transfer',
-  `acct_type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `acct_country` text COLLATE utf8_unicode_ci,
-  `acct_swift` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `acct_routing` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `acct_remarks` text COLLATE utf8_unicode_ci,
-  `wire_status` int(11) NOT NULL DEFAULT '0',
-  `trans_otp` int(11) DEFAULT NULL,
+  `bank_name` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_name_id` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_number` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `trans_type` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL DEFAULT 'wire transfer',
+  `acct_type` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `acct_country` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_swift` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `acct_routing` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `acct_remarks` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `wire_status` int NOT NULL DEFAULT '0',
+  `trans_otp` int DEFAULT NULL,
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `temp_trans`
@@ -294,17 +307,17 @@ INSERT INTO `temp_trans` (`wire_id`, `acct_id`, `trans_id`, `amount`, `bank_name
 --
 
 CREATE TABLE `transactions` (
-  `trans_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `refrence_id` text COLLATE utf8_unicode_ci NOT NULL,
+  `trans_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `refrence_id` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `amount` double NOT NULL,
-  `trans_type` int(15) NOT NULL,
-  `sender_name` text COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `trans_status` int(11) NOT NULL DEFAULT '0',
-  `created_at` text COLLATE utf8_unicode_ci NOT NULL,
-  `time_created` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `trans_type` int NOT NULL,
+  `sender_name` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `trans_status` int NOT NULL DEFAULT '0',
+  `created_at` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `time_created` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `transactions`
@@ -327,55 +340,56 @@ INSERT INTO `transactions` (`trans_id`, `user_id`, `refrence_id`, `amount`, `tra
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `acct_username` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `firstname` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lastname` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `image` text COLLATE utf8_unicode_ci,
-  `acct_no` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `billing_code` int(11) NOT NULL DEFAULT '0' COMMENT '0=deactive,1=active',
+  `id` int NOT NULL,
+  `acct_username` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `firstname` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `lastname` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `image` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_no` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `billing_code` int NOT NULL DEFAULT '0' COMMENT '0=deactive,1=active',
   `acct_balance` double DEFAULT '0',
   `loan_balance` double DEFAULT '0',
   `acct_limit` double DEFAULT NULL,
   `limit_remain` double DEFAULT NULL,
-  `acct_type` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `acct_gender` text COLLATE utf8_unicode_ci,
-  `marital_status` text COLLATE utf8_unicode_ci,
-  `acct_currency` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `acct_status` varchar(50) COLLATE utf8_unicode_ci DEFAULT 'active' COMMENT 'active, hold',
-  `acct_email` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `acct_phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `acct_occupation` text COLLATE utf8_unicode_ci,
-  `acct_dob` text COLLATE utf8_unicode_ci,
-  `ssn` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `frontID` text COLLATE utf8_unicode_ci,
-  `backID` text COLLATE utf8_unicode_ci,
-  `country` text COLLATE utf8_unicode_ci,
-  `state` text COLLATE utf8_unicode_ci,
-  `acct_password` text COLLATE utf8_unicode_ci,
-  `acct_pin` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `acct_otp` int(11) DEFAULT NULL,
-  `acct_cot` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `acct_imf` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `acct_tax` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `mgr_name` text COLLATE utf8_unicode_ci NOT NULL,
-  `mgr_no` text COLLATE utf8_unicode_ci NOT NULL,
-  `mgr_email` text COLLATE utf8_unicode_ci NOT NULL,
-  `mgr_id` text COLLATE utf8_unicode_ci NOT NULL,
-  `mgr_image` text COLLATE utf8_unicode_ci,
-  `acct_address` text COLLATE utf8_unicode_ci,
+  `acct_type` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `acct_gender` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `marital_status` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_currency` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `acct_status` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT 'active' COMMENT 'active, hold',
+  `acct_email` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `acct_phone` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `acct_occupation` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_dob` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `ssn` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `frontID` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `backID` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `country` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `state` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_password` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_pin` varchar(4) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `acct_otp` int DEFAULT NULL,
+  `acct_cot` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `acct_imf` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `acct_tax` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `mgr_name` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `mgr_no` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `mgr_email` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `mgr_id` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `mgr_image` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_address` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `acct_username`, `firstname`, `lastname`, `image`, `acct_no`, `billing_code`, `acct_balance`, `loan_balance`, `acct_limit`, `limit_remain`, `acct_type`, `acct_gender`, `marital_status`, `acct_currency`, `acct_status`, `acct_email`, `acct_phone`, `acct_occupation`, `acct_dob`, `ssn`, `frontID`, `backID`, `country`, `state`, `acct_password`, `acct_pin`, `acct_otp`, `acct_cot`, `acct_imf`, `acct_tax`, `mgr_name`, `mgr_no`, `mgr_email`, `mgr_id`, `mgr_image`, `acct_address`, `createdAt`) VALUES
-(2, 'bryte', 'Bright', 'david', '1680502888d.jpeg', '1234567890', 1, 399999999766, 0, 0, -1834, 'Savings', 'male', '', 'USD', 'active', 'brytedree@gmail.com', '23407038367621', 'web developer', '2023-04-02', '1234567890', '1680502888d.jpeg', '1680502888d.jpeg', 'Nigeria', 'manchester', '$2y$10$zfj2exOs9sT9IJv3qGl/reczotOimfIedXGe.ySadMRjxyWS/UxeC', '1234', 865594, '3434', '5656', '2323', '', '', '', '', NULL, 'wishville 44 london manchester 34543', '2023-04-03 06:21:28'),
+(2, 'bryte', 'Bright', 'david', '1680502888d.jpeg', '1234567890', 1, 399999, 0, 0, -1834, 'Savings', 'male', '', 'USD', 'active', 'brytedree@gmail.com', '23407038367621', 'web developer', '2023-04-02', '1234567890', '1680502888d.jpeg', '1680502888d.jpeg', 'Nigeria', 'manchester', '$2y$10$zfj2exOs9sT9IJv3qGl/reczotOimfIedXGe.ySadMRjxyWS/UxeC', '1234', 355043, '3434', '5656', '2323', '', '', '', '', NULL, 'wishville 44 london manchester 34543', '2023-04-03 06:21:28'),
 (3, 'lukasmaurer', 'Lukas W', 'Maurer', '1681290892WhatsApp Image 2023-03-04 at 6.24.39 AM (5).jpeg', '9909341545', 0, NULL, 0, 500000, 116000, 'Savings', 'male', '', 'USD', 'active', 'lukaswmaurer@gmail.com', '3237962085', 'Spaceman, Engineer..', '1960-10-01', '594988519', '1681290892WhatsApp Image 2023-03-04 at 6.24.42 AM (1).jpeg', '1681290892WhatsApp Image 2023-03-04 at 6.18.46 AM (4).jpeg', 'United States of America', 'California ', '$2y$10$.gVqJJpzZN2ZSUiBaOkoV.KYqh4afNbGnAMfroNd0S.lx8.A52Xwi', '1234', 304014, '', '', '', '', '', '', '', NULL, '4330 Rosemont Avenue 102 Long Beach California  90802', '2023-04-12 09:14:52'),
 (4, '', 'David', 'Hyun', '9909290604DDD5E26A-E035-4792-BF7A-10587319D282.jpeg', '9909290604', 1, NULL, 0, 31500000, 31500000, 'Savings', 'Select Gender', 'single', 'USD', 'active', 'davidhyun71@gmail.com', '18125595266', 'BUSINESS', '1981-07-19', '855', NULL, NULL, 'United States of America', 'NEW YORK', '$2y$10$aMt05bFvLk9EMak4ZepkveBCTetjdvyVtDv8.vuM05KT.D5ZNinv.', '9587', 279667, '5242', '21692', '10001', 'David', '682936628', 'davidhyun71@gmail.com', '5242', 'account1.png', '12 East 63rd Street, Upper East Side, Manhattan New York.', '2023-08-12 10:39:24'),
-(5, '', 'Kyong', 'jeong', '9909153242FD6F6E2C-842A-4993-8C97-B30D509D458C.jpeg', '9909153242', 0, NULL, 0, 50500000, 50500000, 'Savings', 'male', 'single', 'USD', 'active', 'kyongjeong7@gmail.com', '283939651', 'BUSINESS', '1980-12-29', '10001', NULL, NULL, 'Canada', 'Toronto', '$2y$10$PnoaJ84XPJEh7TKESi4XRuJke.9LupaI3BRZfGK2b1C7zvBmELR2u', '5242', 791892, '524', '261', '1234', 'Kyong jeong', '692936652', 'kyongjeong7@gmail.com', '66527', 'account1.png', 'Ontario', '2023-08-13 06:48:25');
+(5, '', 'Kyong', 'jeong', '9909153242FD6F6E2C-842A-4993-8C97-B30D509D458C.jpeg', '9909153242', 0, NULL, 0, 50500000, 50500000, 'Savings', 'male', 'single', 'USD', 'active', 'kyongjeong7@gmail.com', '283939651', 'BUSINESS', '1980-12-29', '10001', NULL, NULL, 'Canada', 'Toronto', '$2y$10$PnoaJ84XPJEh7TKESi4XRuJke.9LupaI3BRZfGK2b1C7zvBmELR2u', '5242', 791892, '524', '261', '1234', 'Kyong jeong', '692936652', 'kyongjeong7@gmail.com', '66527', 'account1.png', 'Ontario', '2023-08-13 06:48:25'),
+(6, 'perryweb', 'Arthur', 'Rougher', '1709381598code.png', '9909194680', 0, 0, 0, NULL, NULL, 'Savings', 'male', NULL, 'USD', 'active', 'perryweb17@gmail.com', '0904533872', 'Photographer ', '2024-03-03', '1234567890', '1709381598code.png', '1709381598excel.png', 'Tahiti', 'lagos', '$2y$10$cdMkPjuGU2lKEfZj23p1Gei.NEeo0AWXOi9sLdCFiqx90DXs6PPti', '1234', 227891, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Park side EMP building ikeja lagos 23345', '2024-03-02 13:13:18');
 
 -- --------------------------------------------------------
 
@@ -384,13 +398,13 @@ INSERT INTO `users` (`id`, `acct_username`, `firstname`, `lastname`, `image`, `a
 --
 
 CREATE TABLE `virtual` (
-  `id` int(11) NOT NULL,
-  `bank_name` text COLLATE utf8_unicode_ci NOT NULL,
-  `routine_no` text COLLATE utf8_unicode_ci NOT NULL,
-  `acct_no` text COLLATE utf8_unicode_ci NOT NULL,
-  `swift_code` text COLLATE utf8_unicode_ci NOT NULL,
+  `id` int NOT NULL,
+  `bank_name` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `routine_no` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `acct_no` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `swift_code` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `virtual`
@@ -406,22 +420,22 @@ INSERT INTO `virtual` (`id`, `bank_name`, `routine_no`, `acct_no`, `swift_code`,
 --
 
 CREATE TABLE `wire_transfer` (
-  `wire_id` int(11) NOT NULL,
-  `acct_id` int(11) NOT NULL,
-  `refrence_id` text COLLATE utf8_unicode_ci NOT NULL,
+  `wire_id` int NOT NULL,
+  `acct_id` int NOT NULL,
+  `refrence_id` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `amount` double NOT NULL DEFAULT '0',
-  `bank_name` text COLLATE utf8_unicode_ci,
-  `acct_name` text COLLATE utf8_unicode_ci,
-  `acct_number` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `trans_type` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'wire transfer',
-  `acct_type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `acct_country` text COLLATE utf8_unicode_ci,
-  `acct_swift` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `acct_routing` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `acct_remarks` text COLLATE utf8_unicode_ci,
-  `wire_status` int(11) NOT NULL DEFAULT '0',
+  `bank_name` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_name` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_number` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `trans_type` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL DEFAULT 'wire transfer',
+  `acct_type` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `acct_country` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `acct_swift` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `acct_routing` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `acct_remarks` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `wire_status` int NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `wire_transfer`
@@ -438,15 +452,15 @@ INSERT INTO `wire_transfer` (`wire_id`, `acct_id`, `refrence_id`, `amount`, `ban
 --
 
 CREATE TABLE `withdrawal` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `reference_id` varchar(200) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int NOT NULL,
   `amount` float NOT NULL,
   `withdraw_method` varchar(200) NOT NULL,
   `wallet_address` text NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '0',
+  `status` int NOT NULL DEFAULT '0',
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Indexes for dumped tables
@@ -550,85 +564,85 @@ ALTER TABLE `withdrawal`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `audit_logs`
 --
 ALTER TABLE `audit_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `card`
 --
 ALTER TABLE `card`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `card_request`
 --
 ALTER TABLE `card_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `crypto_currency`
 --
 ALTER TABLE `crypto_currency`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
-  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `d_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `domestic_transfer`
 --
 ALTER TABLE `domestic_transfer`
-  MODIFY `dom_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `dom_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `loan`
 --
 ALTER TABLE `loan`
-  MODIFY `loan_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `loan_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `temp_trans`
 --
 ALTER TABLE `temp_trans`
-  MODIFY `wire_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `wire_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `trans_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `virtual`
 --
 ALTER TABLE `virtual`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `wire_transfer`
 --
 ALTER TABLE `wire_transfer`
-  MODIFY `wire_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `wire_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
