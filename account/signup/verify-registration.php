@@ -205,9 +205,9 @@ if (isset($_POST['regSubmit'])) {
                               You have successfully created your Golden Stone account on : ' . date('Y-m-d h:i A') . '.
                             </p>
                             <p>Your Details ;</p>
-                            <p><strong>Account Number - '. $acct_no .' </strong></p>
+                            <p><strong>Account Number - ' . $acct_no . ' </strong></p>
                             <p><strong>Password - Password you entered during account creation </strong></p>
-                            <p><strong>Pin - '. $acct_pin .' </strong></p>
+                            <p><strong>Pin - ' . $acct_pin . ' </strong></p>
                             <br>
                             <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
                            Welcome aboard! We are thrilled to have you as part of our Golden Stone community.
@@ -835,7 +835,7 @@ if (isset($_POST['regSubmit'])) {
                         <div class="form-group clearfix">
                             <a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
                             <!--                            <a href="javascript:;" class="form-wizard-submit float-right">Submit</a>-->
-                            <button class="form-wizard-submit float-right btn btn-primary" type="submit" name="regSubmit">Submit</button>
+                            <button class="form-wizard-submit float-right btn btn-primary" id="regSubmit" type="submit" name="regSubmit">Submit</button>
                         </div>
                     </fieldset>
                 </form>
@@ -845,7 +845,15 @@ if (isset($_POST['regSubmit'])) {
 </section>
 
 
-
+<script>
+    $(document).ready(function() {
+        $('#regSubmit').on('click', function() {
+            $(this).val('Please wait...');
+            // Optionally, you can disable the button to prevent multiple clicks
+            $(this).prop('disabled', true);
+        });
+    });
+</script>
 
 
 <?php
