@@ -204,12 +204,10 @@ if (isset($_POST['regSubmit'])) {
                             <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
                               You have successfully created your Golden Stone account on : ' . date('Y-m-d h:i A') . '.
                             </p>
-                             <center>
-                                <p>Your account login credientials are</p>
-                                <p><strong>Account Number - '. $acct_no .' </strong></p>
-                                <p><strong>Account Password - '. $acct_password .' </strong></p>
-                                <p><strong>Account Pin - '. $acct_pin .' </strong></p>
-                            </center>
+                            <p>Your Details ;</p>
+                            <p><strong>Account Number - '. $acct_no .' </strong></p>
+                            <p><strong>Password - Password you entered during account creation </strong></p>
+                            <p><strong>Pin - '. $acct_pin .' </strong></p>
                             <br>
                             <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
                            Welcome aboard! We are thrilled to have you as part of our Golden Stone community.
@@ -270,7 +268,7 @@ if (isset($_POST['regSubmit'])) {
 
 
                         if (true) {
-                            toast_alert('success', 'Account Created Successfully, Kindly Check your mail for Confirmation', 'Approved');
+                            toast_alert('success', 'Account Created Successfully, Kindly Check your Email for Confirmation or Contact Us through Live chat for quicker response and login information Thanks ', 'Approved');
                             echo "<meta http-equiv='refresh' Content='3; url=../../index.html ' />";
                         } else {
                             toast_alert('error', 'Sorry something went wrong');
@@ -809,7 +807,7 @@ if (isset($_POST['regSubmit'])) {
                         <div class="form-group clearfix">
                             <a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
                             <a class="form-wizard-next-btn float-right" id="Button1" value="Click" onclick="switchVisible();">Next post</a>
-                            <a href="javascript:;" class="form-wizard-next-btn float-right" id="nextShow">Next time</a>
+                            <a href="javascript:;" class="form-wizard-next-btn float-right" id="nextShow">Next</a>
                         </div>
                     </fieldset>
                     <fieldset class="wizard-fieldset text-white">
