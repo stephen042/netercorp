@@ -35,7 +35,10 @@ if(isset($_POST['regSubmit'])){
         notify_alert('Password not matched','danger','3000','close');
 
     }elseif ($ssn !== $confirm_ssn){
-        notify_alert('SSN / TIN not matched','danger','3000','close');
+        notify_alert('SSN / TIN not matched:) Please make it accurate','danger','3000','close');
+        if (strlen($ssn) != 9) {
+            notify_alert('SSN / TIN Should be 9 digits', 'danger', '3000', 'close');
+        }
 
     }else {
         //checking exiting email
