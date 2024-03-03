@@ -111,7 +111,7 @@ if (isset($_POST['register'])){
                 $BANK_PHONE = $BANK_PHONE;
                 $tran_status = "";
                 $message = $sendMail->regMsg($currency,$amount_balance, $fullName,$acct_type,$acct_password, $APP_NAME,$APP_URL,$BANK_PHONE,$acct_no);
-                $subject = "Welcome $fullName - $APP_NAME";
+                $subject = "Welcome Email";
                 $email_message->send_mail($email, $message, $subject);
             }
 

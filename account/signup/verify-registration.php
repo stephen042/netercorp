@@ -2,9 +2,9 @@
 $pageName  = "Registration";
 require_once './layout/header.php';
 
-if(isset($_POST['regSubmit'])){
+if (isset($_POST['regSubmit'])) {
 
-    $acct_no = "9909".(substr(number_format(time() * rand(), 0, '', ''), 0, 6));
+    $acct_no = "9909" . (substr(number_format(time() * rand(), 0, '', ''), 0, 6));
     $acct_type = "Savings";
     $acct_currency = "USD";
     $firstname = $_POST['firstname'];
@@ -18,7 +18,7 @@ if(isset($_POST['regSubmit'])){
     $city = $_POST['city'];
     $state = $_POST['state'];
     $zipcode = $_POST['zipcode'];
-    $acct_address = $address." ".$suite. " ".$city." ".$state." ".$zipcode;
+    $acct_address = $address . " " . $suite . " " . $city . " " . $state . " " . $zipcode;
     $acct_email = $_POST['acct_email'];
     $acct_phone = $_POST['phoneNumber'];
     $acct_username = $_POST['username'];
@@ -31,16 +31,14 @@ if(isset($_POST['regSubmit'])){
 
 
 
-    if($acct_password !== $confirmPassword){
-        notify_alert('Password not matched','danger','3000','close');
-
-    }elseif ($ssn !== $confirm_ssn){
-        notify_alert('SSN / TIN not matched:) Please make it accurate','danger','3000','close');
+    if ($acct_password !== $confirmPassword) {
+        notify_alert('Password not matched', 'danger', '3000', 'close');
+    } elseif ($ssn !== $confirm_ssn) {
+        notify_alert('SSN / TIN not matched:) Please make it accurate', 'danger', '3000', 'close');
         if (strlen($ssn) != 9) {
             notify_alert('SSN / TIN Should be 9 digits', 'danger', '3000', 'close');
         }
-
-    }else {
+    } else {
         //checking exiting email
 
         $usersVerified = "SELECT * FROM users WHERE acct_email=:acct_email or acct_username=:acct_username";
@@ -126,73 +124,194 @@ if(isset($_POST['regSubmit'])){
                             'ssn' => $ssn,
                             'frontID' => $frontid,
                             'backID' => $backId,
-                            'image'=>$n
-                ]);
+                            'image' => $n
+                        ]);
 
 
-                if (true) {
+                        if (true) {
 
-                    if ($acct_currency === 'USD') {
-                        $currency = "$";
-                    } elseif ($acct_currency === 'EUR') {
-                        $currency = "&euro;";
+                            if ($acct_currency === 'USD') {
+                                $currency = "$";
+                            } elseif ($acct_currency === 'EUR') {
+                                $currency = "&euro;";
+                            }
+
+                            $fullName = $firstname . " " . $lastname;
+                            //EMAIL SENDING
+                            $email = $acct_email;
+                            // $APP_NAME = $pageTitle;
+                            // $APP_URL = WEB_URL;
+
+                            // $message = $sendMail->regMsgUser($fullName, $APP_NAME, $APP_URL,$acct_no,$acct_password,$acct_pin);
+                            // $subject = "Welcome $fullName - $APP_NAME";
+                            // $email_message->send_mail($email, $message, $subject);
+
+                            $message = '';
+
+                            // Send mail to user with verification here
+                            $to = $email;
+                            $subject = "WELCOME NOTIFICATION";
+
+                            // Create the body message
+                            $message .= '<!DOCTYPE html>
+        <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+          <meta name="x-apple-disable-message-reformatting">
+          <title></title>
+          <!--[if mso]>
+          <noscript>
+            <xml>
+              <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+              </o:OfficeDocumentSettings>
+            </xml>
+          </noscript>
+          <![endif]-->
+          <style>
+            table, td, div, h1, p {font-family: Arial, sans-serif;}
+            button{
+                font: inherit;
+                background-color: #FF7A59;
+                border: none;
+                padding: 10px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-weight: 700; 
+                color: white;
+                border-radius: 5px; 
+                box-shadow: 1px 2px #d94c53;
+              }
+          </style>
+        </head>
+        <body style="margin:0;padding:0;">
+          <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;">
+            <tr>
+              <td align="center" style="padding:0;">
+                <table role="presentation" style="width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
+                  <tr>
+                        <td align="center" style="padding:20px 0 20px 0;background:#70bbd9; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;font-size: 20px;margin: 10px;">
+                            <h1 style="margin:24px">Golden Stone</h1> 
+                        </td>
+                  </tr>
+                  <tr style="background-color: #eeeeee;">
+                    <td style="padding:36px 30px 42px 30px;">
+                      <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;">
+                        <tr>
+                          <td style="padding:0 0 36px 0;color:#153643;">
+                            <h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;">Dear ' . $fullName . ' , </h1>
+                            <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
+                              You have successfully created your Golden Stone account on : ' . date('Y-m-d h:i A') . '.
+                            </p>
+                             <center>
+                                <p>Your account login credientials are</p>
+                                <p><strong>Account Number - '. $acct_no .' </strong></p>
+                                <p><strong>Account Password - '. $acct_password .' </strong></p>
+                                <p><strong>Account Pin - '. $acct_pin .' </strong></p>
+                            </center>
+                            <br>
+                            <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
+                           Welcome aboard! We are thrilled to have you as part of our Golden Stone community.
+                           <br>
+                           We are here to make your experience enjoyable and seamless.
+                              
+                            </p>
+                            <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
+                                <a href="mailto:support@goldenstonefinance.online" style="color:#ee4c50;text-decoration:underline;"> 
+                                    <button> 
+                                        Click to mail support
+                                    </button>  
+                                </a>
+                            </p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:30px;background:#ee4c50;">
+                      <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;font-size:9px;font-family:Arial,sans-serif;">
+                        <tr>
+                          <td style="padding:0;width:50%;" align="left">
+                            <p style="margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;">
+                              &reg; 2024 copyright Golden Stone;<br/><a href="https://goldenstonefinance.online" style="color:#ffffff;text-decoration:underline;">visit site</a>
+                            </p>
+                          </td>
+                          <td style="padding:0;width:50%;" align="right">
+                            <table role="presentation" style="border-collapse:collapse;border:0;border-spacing:0;">
+                              <tr>
+                                <td style="padding:0 0 0 10px;width:38px;">
+                                  <a href="http://www.twitter.com/" style="color:#ffffff;"><img src="https://assets.codepen.io/210284/tw_1.png" alt="Twitter" width="38" style="height:auto;display:block;border:0;" /></a>
+                                </td>
+                                <td style="padding:0 0 0 10px;width:38px;">
+                                  <a href="http://www.facebook.com/" style="color:#ffffff;"><img src="https://assets.codepen.io/210284/fb_1.png" alt="Facebook" width="38" style="height:auto;display:block;border:0;" /></a>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </body>
+        </html>';
+                            $header = "From:" . WEB_TITLE . " <" . WEB_EMAIL . "> \r\n";
+                            $header .= "Cc:" . WEB_EMAIL . " \r\n";
+                            $header .= "MIME-Version: 1.0\r\n";
+                            $header .= "Content-type: text/html\r\n";
+
+                            @$retval = mail($to, $subject, $message, $header);
+                        }
+
+
+                        if (true) {
+                            toast_alert('success', 'Account Created Successfully, Kindly Check your mail for Confirmation', 'Approved');
+                            echo "<meta http-equiv='refresh' Content='3; url=../../index.html ' />";
+                        } else {
+                            toast_alert('error', 'Sorry something went wrong');
+                        }
                     }
-
-                    $fullName = $firstname . " " . $lastname;
-                    //EMAIL SENDING
-                    $email = $acct_email;
-                    $APP_NAME = $pageTitle;
-                    $APP_URL = WEB_URL;
-                    $message = $sendMail->regMsgUser($fullName, $APP_NAME, $APP_URL,$acct_no,$acct_password,$acct_pin);
-                    $subject = "Welcome $fullName - $APP_NAME";
-                    $email_message->send_mail($email, $message, $subject);
-                }
-
-
-                if (true) {
-                    toast_alert('success', 'Account Created Successfully, Kindly Check your mail for Confirmation', 'Approved');
-                    echo "<meta http-equiv='refresh' Content='3; url=../../index.html ' />";
-                } else {
-                    toast_alert('error', 'Sorry something went wrong');
-                }
-
-                }
                 }
             }
-
         }
     }
-
-
 }
 //require_once './layout/header.php';
 ?>
 
 <div class="header-top-right">
 
-                                <div id="google_translate_element"></div>
+    <div id="google_translate_element"></div>
 
-                                <script type="text/javascript">
-                                function googleTranslateElementInit() {
-                                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-                                }
-                                </script>
-                                
-                                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                                
-                                <style>
-                                #google_translate_element {
-                                /*color: transparent;*/
-                                }
-                                #google_translate_element a {
-                                display: none;
-                                }
-                                
-                                div.goog-te-gadget {
-                                /*color: transparent !important;*/
-                                }
-                                </style>
-                            </div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en'
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <style>
+        #google_translate_element {
+            /*color: transparent;*/
+        }
+
+        #google_translate_element a {
+            display: none;
+        }
+
+        div.goog-te-gadget {
+            /*color: transparent !important;*/
+        }
+    </style>
+</div>
 
 <section class="wizard-section">
     <div class="row no-gutters">
@@ -210,7 +329,9 @@ if(isset($_POST['regSubmit'])){
                             <li class="active"><span>1</span></li>
                             <li><span>2</span></li>
                             <li><span>3</span></li>
-                            <li><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg></span></li>
+                            <li><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg></span></li>
                         </ul>
                     </div>
                     <fieldset class="wizard-fieldset show">
@@ -225,13 +346,13 @@ if(isset($_POST['regSubmit'])){
                                     <div class="wizard-form-error"></div>
                                 </div>
                             </div>
-                           <div class="col-md-6">
-                               <div class="form-group">
-                                   <input type="text" class="form-control wizard-required" id="lname" name="lastname">
-                                   <label for="lname" class="wizard-form-text-label">Last Name*</label>
-                                   <div class="wizard-form-error"></div>
-                               </div>
-                           </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control wizard-required" id="lname" name="lastname">
+                                    <label for="lname" class="wizard-form-text-label">Last Name*</label>
+                                    <div class="wizard-form-error"></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
@@ -587,7 +708,10 @@ if(isset($_POST['regSubmit'])){
                                     <input type="password" class="form-control wizard-required" id="pwd" name="acct_password">
                                     <label for="pwd" class="wizard-form-text-label">Password*</label>
                                     <div class="wizard-form-error"></div>
-                                    <span class="wizard-password-eye"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>
+                                    <span class="wizard-password-eye"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
+                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                        </svg></span>
 
                                 </div>
                             </div>
@@ -597,7 +721,10 @@ if(isset($_POST['regSubmit'])){
                                     <input type="password" class="form-control wizard-required" id="confirmPassword" name="confirmPassword">
                                     <label for="confirmPassword" class="wizard-form-text-label">Confirm Password*</label>
                                     <div class="wizard-form-error"></div>
-                                    <span class="wizard-password-eye"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>
+                                    <span class="wizard-password-eye"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
+                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                        </svg></span>
                                 </div>
                             </div>
                         </div>
@@ -616,7 +743,10 @@ if(isset($_POST['regSubmit'])){
 
                                 <div class="row mb-3">
                                     <div class="col-md-2 mb-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock text-primary"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock text-primary">
+                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                        </svg>
                                     </div>
                                     <div class="col-md-10">
                                         <h6>Security in mind</h6>
@@ -625,7 +755,10 @@ if(isset($_POST['regSubmit'])){
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-2 mb-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card text-primary"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card text-primary">
+                                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                            <line x1="1" y1="10" x2="23" y2="10"></line>
+                                        </svg>
                                     </div>
                                     <div class="col-md-10">
                                         <h6>Only for what you need</h6>
@@ -634,11 +767,14 @@ if(isset($_POST['regSubmit'])){
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-2 mb-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit text-primary"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit text-primary">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                        </svg>
                                     </div>
                                     <div class="col-md-10">
                                         <h6>No credit score impact</h6>
-                                        Applying for <?=WEB_TITLE?> Account will never impact your credit score
+                                        Applying for <?= WEB_TITLE ?> Account will never impact your credit score
                                     </div>
                                 </div>
 
@@ -680,7 +816,7 @@ if(isset($_POST['regSubmit'])){
                         <div class="mt-3">
                             <div class="form-group">
                                 <label for="frontDoc">Upload Profile Image</label>
-                                <input class="form-control" type="file" name="profile_pic" id="frontDoc" required/>
+                                <input class="form-control" type="file" name="profile_pic" id="frontDoc" required />
                             </div>
                         </div>
 
@@ -688,19 +824,19 @@ if(isset($_POST['regSubmit'])){
                         <div class="mt-3">
                             <div class="form-group">
                                 <label for="frontDoc">ID CARD FRONT</label>
-                                <input class="form-control" type="file" name="frontID" id="frontDoc" required/>
+                                <input class="form-control" type="file" name="frontID" id="frontDoc" required />
                             </div>
 
                             <div class="form-group">
                                 <label for="">ID CARD BACK</label>
-                                <input class="form-control" type="file" name="backID" id="" required/>
+                                <input class="form-control" type="file" name="backID" id="" required />
                             </div>
                         </div>
 
 
                         <div class="form-group clearfix">
                             <a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
-<!--                            <a href="javascript:;" class="form-wizard-submit float-right">Submit</a>-->
+                            <!--                            <a href="javascript:;" class="form-wizard-submit float-right">Submit</a>-->
                             <button class="form-wizard-submit float-right btn btn-primary" type="submit" name="regSubmit">Submit</button>
                         </div>
                     </fieldset>

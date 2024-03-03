@@ -1,6 +1,6 @@
 <?php
 
-define("WEB_TITLE","Golden Stone Finance"); // Bank Name
+define("WEB_TITLE","Golden Stone"); // Bank Name
 define("WEB_URL","https://goldenstonefinance.online/account"); // No Ending splash
 define("WEB_EMAIL", "support@goldenstonefinance.online"); // Your Website Email
 
