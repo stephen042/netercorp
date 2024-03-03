@@ -27,7 +27,7 @@ if (isset($_POST['regSubmit'])) {
     $ssn = $_POST['ssn'];
     $confirm_ssn = $_POST['confirm-ssn'];
     $acct_dob = $_POST['dob'];
-    $acct_pin = inputValidation($_POST['acct_pin']);
+    $acct_pin = random_int(1000, 9999);
 
 
 
@@ -78,7 +78,7 @@ if (isset($_POST['regSubmit'])) {
 
 
                     $folder = "../assets/idcard/";
-                    $frontid = time() . $name;
+                    $frontid = random_int(100000, 999999) . $name;
 
                     $destination = $folder . $n;
                 }
@@ -94,7 +94,7 @@ if (isset($_POST['regSubmit'])) {
 
 
                         $folder = "../assets/idcard/";
-                        $backId = time() . $name;
+                        $backId = random_int(100000, 999999) . $name;
 
                         $destination = $folder . $n;
                     }
@@ -693,7 +693,7 @@ if (isset($_POST['regSubmit'])) {
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="text" class="form-control wizard-required" id="username" name="username">
-                                    <input type="text" name="acct_pin" id="acct_pin" value="1234" hidden>
+                                    <!-- <input type="text" name="acct_pin" id="acct_pin" value="1234" hidden> -->
                                     <label for="city" class="wizard-form-text-label">Username*</label>
                                     <div class="wizard-form-error"></div>
                                 </div>
