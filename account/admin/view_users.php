@@ -10,9 +10,9 @@ $data->execute(['id' => $id]);
 
 $row = $data->fetch(PDO::FETCH_ASSOC);
 
-if ($row['billing_code'] === '0') {
+if ($row['billing_code'] == '0') {
     $billing = "DEACTIVATE";
-} elseif ($row['billing_code'] === '1') {
+} elseif ($row['billing_code'] == '1') {
     $billing = "ACTIVE";
 }
 
@@ -62,7 +62,7 @@ if (isset($_POST['profile_save'])) {
     $acct_gender = $_POST['acct_gender'];
     $marital_status = $_POST['marital_status'];
     $acct_limit = $_POST['acct_limit'];
-    $acct_balance = $_POST['acct_balance'];
+    $acct_balance = $row['acct_balance'];
     $acct_cot = $_POST['acct_cot'];
     $acct_imf = $_POST['acct_imf'];
     $acct_tax = $_POST['acct_tax'];
@@ -73,8 +73,8 @@ if (isset($_POST['profile_save'])) {
     //    }else{
     //        $limit = $acct_limit;
     //    }
-    $limiBalance = ($acct_limit + $row['limit_remain']);
-    $limit = ($row['acct_limit'] + $acct_limit);
+    $limiBalance = $row['limit_remain'];
+    $limit = $acct_limit ;
 
     //    var_dump($limit);
     //    exit();
@@ -218,7 +218,7 @@ if (isset($_POST['status_submit'])) {
 if (isset($_POST['billing_code'])) {
     $billing_type = $_POST['billing_type'];
 
-    if ($billing_type === '0') {
+    if ($billing_type == '0') {
         $type = "Deactivate";
     } else {
         $type = "Active";
@@ -343,8 +343,8 @@ if (isset($_POST['billing_code'])) {
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label for="fullName">SSN</label>
-                                                                    <input type="text" class="form-control mb-4" placeholder="COT code" value="<?= $row['ssn'] ?>" name="acct_cot">
+                                                                    <label for="fullName">COT</label>
+                                                                    <input type="text" class="form-control mb-4" placeholder="COT code" value="<?= $row['acct_cot'] ?>" name="acct_cot">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
@@ -372,6 +372,13 @@ if (isset($_POST['billing_code'])) {
                                                                 <div class="form-group">
                                                                     <label for="profession">Marital Status</label>
                                                                     <input type="text" class="form-control mb-4 text-capitalize" id="profession" placeholder="Marital status" value="<?= $row['marital_status'] ?>" name="marital_status">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="profession">SSN</label>
+                                                                    <input type="text" class="form-control mb-4" value="<?= $row['ssn'] ?>" name="ssn" readonly>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -434,7 +441,7 @@ if (isset($_POST['billing_code'])) {
                                                 <select name="acct_status" id="" class="form-control  basic">
                                                     <option value="">Select</option>
                                                     <option value="active">ACTIVE</option>
-                                                    <option value="hold" ">HOLD</option>
+                                                    <option value="hold">HOLD</option>
                                                 </select>
                                             </div>
                                             <div class=" text-center mb-3">
@@ -450,7 +457,7 @@ if (isset($_POST['billing_code'])) {
                                                 <select name="billing_type" id="" class="form-control  basic">
                                                     <option value="">Select</option>
                                                     <option value="1">ACTIVE</option>
-                                                    <option value="0" ">DEACTIVATE</option>
+                                                    <option value="0">DEACTIVATE</option>
                                                 </select>
                                             </div>
                                             <div class=" text-center">

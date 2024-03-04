@@ -597,6 +597,9 @@ $cardCheck = $cardstmt->fetch(PDO::FETCH_ASSOC);
                             <li>
                                 <a href="loan-transaction.php"> Loan Transaction </a>
                             </li>
+                            <li>
+                                <a href="deposit-transaction.php"> Deposit Transaction </a>
+                            </li>
                         </ul>
                     </li>
 

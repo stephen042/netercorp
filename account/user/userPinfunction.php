@@ -1,5 +1,7 @@
 <?php
 
+use Twilio\TwiML\Voice\Echo_;
+
 $email = $row['acct_email'];
 $account_id =$row['id'];
 
@@ -28,13 +30,13 @@ if(isset($_POST['wire_transfer'])){
         $limit_balance = $row['acct_limit'];
         $transferLimit = $row['limit_remain'];
 
-        // if($transferLimit === 0){
-        //     toast_alert('error', 'You have Exceed Your Transfer Limit');
-        // }
+        if($transferLimit === 0){
+            toast_alert('error', 'You have Exceed Your Transfer Limit');
+        }
 
-        // if($amount > $transferLimit){
-        //     toast_alert('error', 'Your transfer limit remain '.$transferLimit);
-        // } else {
+        if($amount > $transferLimit){
+            toast_alert('error', 'Your transfer limit remain '.$transferLimit);
+        } else {
         
             $trans_id = uniqid();
             $trans_opt = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
@@ -103,6 +105,7 @@ if(isset($_POST['wire_transfer'])){
                         header("Location:./cot.php");
                     }
                 }
+            }
         }
     }
 
@@ -226,7 +229,7 @@ if(isset($_POST['submit-pin'])){
                 header("Location:./success.php");
 
             } else {
-                toast_alert("error", "Sorry Error Occured Contact Support");
+                toast_alert("error", "Sorry Error Occurred Contact Support");
             }
 
         }
