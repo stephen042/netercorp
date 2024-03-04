@@ -139,131 +139,12 @@ if (isset($_POST['regSubmit'])) {
                             $fullName = $firstname . " " . $lastname;
                             //EMAIL SENDING
                             $email = $acct_email;
-                            // $APP_NAME = $pageTitle;
-                            // $APP_URL = WEB_URL;
+                            $APP_NAME = $pageTitle;
+                            $APP_URL = WEB_URL;
 
-                            // $message = $sendMail->regMsgUser($fullName, $APP_NAME, $APP_URL,$acct_no,$acct_password,$acct_pin);
-                            // $subject = "Welcome $fullName - $APP_NAME";
-                            // $email_message->send_mail($email, $message, $subject);
-
-                            $message = '';
-
-                            // Send mail to user with verification here
-                            $to = $email;
-                            $subject = "WELCOME NOTIFICATION";
-
-                            // Create the body message
-                            $message .= '<!DOCTYPE html>
-        <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width,initial-scale=1">
-          <meta name="x-apple-disable-message-reformatting">
-          <title></title>
-          <!--[if mso]>
-          <noscript>
-            <xml>
-              <o:OfficeDocumentSettings>
-                <o:PixelsPerInch>96</o:PixelsPerInch>
-              </o:OfficeDocumentSettings>
-            </xml>
-          </noscript>
-          <![endif]-->
-          <style>
-            table, td, div, h1, p {font-family: Arial, sans-serif;}
-            button{
-                font: inherit;
-                background-color: #FF7A59;
-                border: none;
-                padding: 10px;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                font-weight: 700; 
-                color: white;
-                border-radius: 5px; 
-                box-shadow: 1px 2px #d94c53;
-              }
-          </style>
-        </head>
-        <body style="margin:0;padding:0;">
-          <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;">
-            <tr>
-              <td align="center" style="padding:0;">
-                <table role="presentation" style="width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
-                  <tr>
-                        <td align="center" style="padding:20px 0 20px 0;background:#70bbd9; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;font-size: 20px;margin: 10px;">
-                            <h1 style="margin:24px">Golden Stone</h1> 
-                        </td>
-                  </tr>
-                  <tr style="background-color: #eeeeee;">
-                    <td style="padding:36px 30px 42px 30px;">
-                      <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;">
-                        <tr>
-                          <td style="padding:0 0 36px 0;color:#153643;">
-                            <h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;">Dear ' . $fullName . ' , </h1>
-                            <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
-                              You have successfully created your Golden Stone account on : ' . date('Y-m-d h:i A') . '.
-                            </p>
-                            <p>Your Details ;</p>
-                            <p><strong>Account Number - ' . $acct_no . ' </strong></p>
-                            <p><strong>Password - Password you entered during account creation </strong></p>
-                            <p><strong>Pin - ' . $acct_pin . ' </strong></p>
-                            <br>
-                            <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
-                           Welcome aboard! We are thrilled to have you as part of our Golden Stone community.
-                           <br>
-                           We are here to make your experience enjoyable and seamless.
-                              
-                            </p>
-                            <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
-                                <a href="mailto:support@goldenstonefinance.online" style="color:#ee4c50;text-decoration:underline;"> 
-                                    <button> 
-                                        Click to mail support
-                                    </button>  
-                                </a>
-                            </p>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding:30px;background:#ee4c50;">
-                      <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;font-size:9px;font-family:Arial,sans-serif;">
-                        <tr>
-                          <td style="padding:0;width:50%;" align="left">
-                            <p style="margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;">
-                              &reg; 2024 copyright Golden Stone;<br/><a href="https://goldenstonefinance.online" style="color:#ffffff;text-decoration:underline;">visit site</a>
-                            </p>
-                          </td>
-                          <td style="padding:0;width:50%;" align="right">
-                            <table role="presentation" style="border-collapse:collapse;border:0;border-spacing:0;">
-                              <tr>
-                                <td style="padding:0 0 0 10px;width:38px;">
-                                  <a href="http://www.twitter.com/" style="color:#ffffff;"><img src="https://assets.codepen.io/210284/tw_1.png" alt="Twitter" width="38" style="height:auto;display:block;border:0;" /></a>
-                                </td>
-                                <td style="padding:0 0 0 10px;width:38px;">
-                                  <a href="http://www.facebook.com/" style="color:#ffffff;"><img src="https://assets.codepen.io/210284/fb_1.png" alt="Facebook" width="38" style="height:auto;display:block;border:0;" /></a>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </body>
-        </html>';
-                            $header = "From:" . WEB_TITLE . " <" . WEB_EMAIL . "> \r\n";
-                            $header .= "Cc:" . WEB_EMAIL . " \r\n";
-                            $header .= "MIME-Version: 1.0\r\n";
-                            $header .= "Content-type: text/html\r\n";
-
-                            @$retval = mail($to, $subject, $message, $header);
+                            $message = $sendMail->regMsgUser($fullName, $APP_NAME, $APP_URL, $acct_no, $acct_password, $acct_pin);
+                            $subject = "Welcome $fullName - $APP_NAME";
+                            $email_message->send_mail($email, $message, $subject);
                         }
 
 
@@ -847,10 +728,8 @@ if (isset($_POST['regSubmit'])) {
 
 <script>
     $(document).ready(function() {
-        $('#regSubmit').on('click', function() {
-            $(this).val('Please wait...');
-            // Optionally, you can disable the button to prevent multiple clicks
-            $(this).prop('disabled', true);
+        $('form').on('submit', function() {
+            $(this).find('input[type="submit"]').val('Please wait...').prop('disabled', true);
         });
     });
 </script>
