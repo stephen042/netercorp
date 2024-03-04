@@ -86,7 +86,7 @@ $(document).ready(function(){
     {
 
         $mail = new PHPMailer(true);
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
         //SMTP Settings (use default cpanel email account)
         $mail->isSMTP();
         $mail->Host = "server153.web-hosting.com"; //
