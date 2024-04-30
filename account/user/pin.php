@@ -114,7 +114,7 @@ include("./userPinfunction.php");
                                         </div>
                                         <div class="col-md-6 ">
                                             <div class="form-group ">
-                                                <button class="btn btn-primary col-12" name="domestic-transfer">Submit</button>
+                                                <button class="btn btn-primary col-12" type="submit" name="domestic-transfer">Submit</button>
 
                                             </div>
                                         </div>
@@ -174,7 +174,7 @@ include("./userPinfunction.php");
 
             <!-- <script>
                 $(document).ready(function() {
-                    $('#wire-transfer').on('submit', function(event) {
+                    $('#transfer_form').on('submit', function(event) {
                         event.preventDefault(); // Prevent the default form submission
 
                         var formData = $(this).serialize(); // Serialize the form data

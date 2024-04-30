@@ -74,7 +74,7 @@ if (isset($_POST['profile_save'])) {
     //        $limit = $acct_limit;
     //    }
     $limiBalance = $row['limit_remain'];
-    $limit = $acct_limit ;
+    $limit = $acct_limit;
 
     //    var_dump($limit);
     //    exit();
@@ -114,11 +114,8 @@ if (isset($_POST['profile_save'])) {
 if (isset($_POST['status_delete'])) {
     $status_delete = $_POST['status_delete'];
 
-    $sql = "DELETE FROM users WHERE id =$id";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([
-        '$status_delete' => $status_delete
-    ]);
+    $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
+    $stmt->execute([$id]);
 
 
     if (true) {
@@ -127,7 +124,7 @@ if (isset($_POST['status_delete'])) {
         toast_alert('error', 'Sorry Something Went Wrong');
     }
 
-    header('Location:' . $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']);
+    header('Location: users.php');
     die;
 }
 
@@ -258,6 +255,7 @@ if (isset($_POST['billing_code'])) {
                                         <div class="col-lg-11 mx-auto">
                                             <div class="row">
                                                 <div class="col-xl-3 col-lg-12 col-md-4 text-center">
+                                                    Profile Picture
                                                     <div class="upload mt-4 pr-md-4">
                                                         <center>
                                                             <input type="file" id="input-file-max-fs" class="dropify" data-default-file="../assets/profile/<?= $row['image'] ?>" name="image" data-max-file-size="2M" />
@@ -270,13 +268,15 @@ if (isset($_POST['billing_code'])) {
                                                 </div>
                                                 <!-- front iD -->
                                                 <div class="col-xl-3 col-lg-12 col-md-4 text-center m-4">
-                                                    <img class="card-img-top" src="../assets/idcard/<?= $row['frontID'] ?>" alt="Card image cap" height="200" width="100">
-                                                    <p class="bg-success my-3">Front ID-Card</p>
+                                                    <p>Front ID</p>
+                                                    <img class="card-img-top" src="../assets/frontid/<?= $row['frontID'] ?>" alt="Card image cap" height="200" width="100">
+                                                    <a class="btn btn-primary my-2" href="../assets/frontid/<?= $row['backID'] ?>" download>Download</a>
                                                 </div>
                                                 <!-- back ID -->
                                                 <div class="col-xl-3 col-lg-12 col-md-4 text-center m-4">
-                                                    <img class="card-img-top" src="../assets/idcard/<?= $row['backID'] ?>" alt="Card image cap" height="200" width="100">
-                                                    <p class="bg-success my-3">Back ID-Card</p>
+                                                    <p>Back ID</p>
+                                                    <img class="card-img-top" src="../assets/backid/<?= $row['backID'] ?>" alt="Card image cap" height="200" width="100">
+                                                    <a class="btn btn-primary my-2" href="../assets/backid/<?= $row['backID'] ?>" download>Download</a>
                                                 </div>
                                                 <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
                                                     <div class="form">
@@ -445,7 +445,7 @@ if (isset($_POST['billing_code'])) {
                                                 </select>
                                             </div>
                                             <div class=" text-center mb-3">
-                                                        <button class="btn btn-primary" name="status_submit">Submit</button>
+                                                <button class="btn btn-primary" name="status_submit">Submit</button>
                                             </div>
                                         </div>
 
@@ -461,7 +461,7 @@ if (isset($_POST['billing_code'])) {
                                                 </select>
                                             </div>
                                             <div class=" text-center">
-                                                        <button class="btn btn-primary" name="billing_code">Change Billing Code</button>
+                                                <button class="btn btn-primary" name="billing_code">Change Billing Code</button>
                                             </div>
                                         </div>
 

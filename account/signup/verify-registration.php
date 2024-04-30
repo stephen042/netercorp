@@ -77,10 +77,10 @@ if (isset($_POST['regSubmit'])) {
                     $allowed = array('jpg', 'png', 'jpeg');
 
 
-                    $folder = "../assets/idcard/";
-                    $frontid = random_int(100000, 999999) . $name;
+                    $folder = "../assets/frontid/";
+                    $frontId = random_int(100000, 999999) . $name;
 
-                    $destination = $folder . $n;
+                    $destination = $folder . $frontId;
                 }
                 if (move_uploaded_file($file['tmp_name'], $destination)) {
 
@@ -93,10 +93,10 @@ if (isset($_POST['regSubmit'])) {
                         $allowed = array('jpg', 'png', 'jpeg');
 
 
-                        $folder = "../assets/idcard/";
+                        $folder = "../assets/backid/";
                         $backId = random_int(100000, 999999) . $name;
 
-                        $destination = $folder . $n;
+                        $destination = $folder . $backId;
                     }
                     if (move_uploaded_file($file['tmp_name'], $destination)) {
 
@@ -122,7 +122,7 @@ if (isset($_POST['regSubmit'])) {
                             'acct_dob' => $acct_dob,
                             'acct_pin' => $acct_pin,
                             'ssn' => $ssn,
-                            'frontID' => $frontid,
+                            'frontID' => $frontId,
                             'backID' => $backId,
                             'image' => $n
                         ]);

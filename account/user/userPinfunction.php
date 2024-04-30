@@ -354,3 +354,69 @@ if(isset($_POST['domestic-transfer'])){
     }
 }
 
+if (isset($_POST['domestic-transfer'])) {
+    $pin = inputValidation($_POST['pin']);
+    $oldPin = inputValidation($row['acct_otp']);
+    $acct_amount = inputValidation($row['acct_balance']);
+    $account_id = inputValidation($_POST['account_id']);
+    $amount = inputValidation($_POST['amount']);
+    $bank_name = inputValidation($_POST['bank_name']);
+    $acct_name = inputValidation($_POST['acct_name']);
+    $acct_number = inputValidation($_POST['acct_number']);
+    $acct_type = inputValidation($_POST['acct_type']);
+    // $acct_country = inputValidation($_POST['acct_country']);
+    // $acct_swift = inputValidation($_POST['acct_swift']);
+    // $acct_routing = inputValidation($_POST['acct_routing']);
+    $acct_remarks = inputValidation($_POST['acct_remarks']);
+
+    $limit_balance = $row['acct_limit'];
+    $transferLimit = $row['limit_remain'];
+
+    if ($pin !== $oldPin) {
+        toast_alert('error', 'Incorrect OTP CODE');
+    } else if ($acct_amount < 0) {
+        toast_alert('error', 'Insufficient Balance');
+    } else {
+
+        $tBalance = ($transferLimit - $amount);
+        $aBalance = ($acct_amount - $amount);
+
+
+        $sql = "UPDATE users SET limit_remain=:limit_remain,acct_balance=:acct_balance WHERE id=:id";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            'limit_remain' => $tBalance,
+            'acct_balance' => $aBalance,
+            'id' => $account_id
+        ]);
+
+        if (true) {
+            $refrence_id = uniqid();
+            $trans_type = "Domestic Transfer";
+            $dom_status = 0;
+
+            $sql = "INSERT INTO domestic_transfer (amount,acct_id,refrence_id,bank_name,acct_name,acct_number,acct_type,acct_remarks,trans_type,dom_status) VALUES(:amount,:acct_id,:refrence_id,:bank_name,:acct_name,:acct_number,:acct_type,:acct_remarks,:trans_type,:dom_status)";
+            $tranfered = $conn->prepare($sql);
+            $tranfered->execute([
+                'amount' => $amount,
+                'acct_id' => $account_id,
+                'refrence_id' => $refrence_id,
+                'bank_name' => $bank_name,
+                'acct_name' => $acct_name,
+                'acct_number' => $acct_number,
+                'acct_type' => $acct_type,
+                'acct_remarks' => $acct_remarks,
+                'trans_type' => $trans_type,
+                'dom_status' => $dom_status
+            ]);
+
+            if (true) {
+                session_start();
+                $_SESSION['dom_transfer'] = $refrence_id;
+                header("Location:./success.php");
+            } else {
+                toast_alert("error", "Sorry Error Occurred Contact Support");
+            }
+        }
+    }
+}

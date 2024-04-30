@@ -1,3 +1,4 @@
-account/assets/idcard
+# account/assets/frontid
+# account/assets/backid
 account/assets/profile
 account/include/config.php
