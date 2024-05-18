@@ -73,7 +73,7 @@ if (isset($_POST['profile_save'])) {
     //    }else{
     //        $limit = $acct_limit;
     //    }
-    $limiBalance = $row['limit_remain'];
+    $limiBalance = $acct_limit;
     $limit = $acct_limit;
 
     //    var_dump($limit);
@@ -283,6 +283,12 @@ if (isset($_POST['billing_code'])) {
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
+                                                                    <label for="fullName">Account Balance</label>
+                                                                    <input type="text" class="form-control mb-4" placeholder="Acct balance" value="$<?= number_format($row['acct_balance'],2)  ?>" disabled >
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
                                                                     <label for="fullName">Account No</label>
                                                                     <input type="text" class="form-control mb-4" placeholder="Full Name" value="<?= $row['acct_no'] ?>" name="acct_no">
                                                                 </div>
@@ -394,7 +400,7 @@ if (isset($_POST['billing_code'])) {
                                                                         <div class="form-group">
 
                                                                             <label for="profession">Account Limit</label>
-                                                                            <input type="text" class="form-control mb-4" name="acct_limit" placeholder="<?= $row['acct_limit'] ?>" value="">
+                                                                            <input type="text" class="form-control mb-4" name="acct_limit" placeholder="<?= $row['acct_limit'] ?>" value="<?= $row['acct_limit'] ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>

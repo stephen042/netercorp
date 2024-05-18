@@ -1,58 +1,59 @@
 <?php
 require_once '../include/vendor/autoload.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 //const APP_NAME = "Bank Pro";
 
 const ENV = 'online';
 define("BANK_PHONE", "+1469 218-9994‬");
-if (ENV == "online"){
+if (ENV == "online") {
     define("APP_URL", "https://goldenstonefinance.online/account");
-}else{
+} else {
     define("APP_URL", "https://goldenstonefinance.online/account");
 }
 
-class message{
+class message
+{
     private $conn;
-    // public function send_mail($email, $message, $subject){
-    //     require_once "../mailer/PHPMailer.php";
-    //     require_once "../mailer/SMTP.php";
-    //     require_once "../mailer/Exception.php";
+    public function send_mail($email, $message, $subject)
+    {
 
-        
-    //     $mail = new PHPMailer();
-    //     //SMTP Settings (use default cpanel email account)
-    //     $mail->isSMTP();
-    //     $mail->Host = "netercorp.org"; //
-    //     $mail->SMTPAuth = true;
-    //     $mail->Username = "support@netercorp.org"; // Default cpanel email account
-    //     $mail->Password = '@@mailpass##'; // Default cpanel email password
-    //     $mail->Port = 465; // 587
-    //     $mail->SMTPSecure = "ssl"; // tls
+        $mail = new PHPMailer(true);
+        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        //SMTP Settings (use default cpanel email account)
+        $mail->isSMTP();
+        $mail->Host = "server153.web-hosting.com"; //
+        $mail->SMTPAuth = true;
+        $mail->Username = "support@goldenstonefinance.online"; // Default cpanel email account
+        $mail->Password = 'goldenSecret.'; // Default cpanel email password
+        $mail->Port = 587; // 587 or 465
+        $mail->SMTPSecure = "tls"; // tls
 
-    //     //Email Settings
-    //     $mail->isHTML(true);
-    //     $mail->setFrom('support@netercorp.org','Netercorp'); // Email address/ Bank bane shown to reciever
-    //     $mail->addAddress($email);
-    //     $mail->AddReplyTo("support@netercorp.org", "Netercorp"); // Email address/ Bank bane shown to reciever
-    //     $mail->Subject = $subject;
-    //     $mail->MsgHTML($message);
-    //     $mail->Send();
-
-    // }
-    
-    public function send_mail($email, $message, $subject) {
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= 'From: Netercorp<support@netercorp.org>' . "\r\n";
-        mail($email,$subject,$message,$headers);
+        //Email Settings
+        $mail->isHTML(true);
+        $mail->setFrom('support@goldenstonefinance.online', 'Golden Stone'); // Email address/ Bank bane shown to reciever
+        $mail->addAddress($email);
+        $mail->AddReplyTo("support@goldenstonefinance.online", "Golden Stone"); // Email address/ Bank bane shown to reciever
+        $mail->Subject = $subject;
+        $mail->Body = $message;
+        $mail->Send();
     }
 
+    // public function send_mail($email, $message, $subject) {
+    //     $headers = "MIME-Version: 1.0" . "\r\n";
+    //     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    //     $headers .= 'From: Netercorp<support@netercorp.org>' . "\r\n";
+    //     mail($email,$subject,$message,$headers);
+    // }
+
 }
 
 
-class emailMessage{
+class emailMessage
+{
 
-    public function regMsg($currency,$amount_balance, $fullName,$acct_type,$acct_password, $APP_NAME,$APP_URL,$BANK_PHONE,$acct_no){
+    public function regMsg($currency, $amount_balance, $fullName, $acct_type, $acct_password, $APP_NAME, $APP_URL, $BANK_PHONE, $acct_no)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -269,10 +270,10 @@ class emailMessage{
 </body>
 
 </html>";
-
     }
 
-    public function depositMsg($currency,$amount,$amount_balance,$crypto_name,$fullName,$APP_NAME,$tran_status,$reference_id){
+    public function depositMsg($currency, $amount, $amount_balance, $crypto_name, $fullName, $APP_NAME, $tran_status, $reference_id)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -479,10 +480,10 @@ class emailMessage{
 </body>
 
 </html>";
-
     }
 
-    public function wireMsg($currency, $amount,$amount_balance,$trans_type, $fullName, $APP_NAME,$tran_status,$reference_id){
+    public function wireMsg($currency, $amount, $amount_balance, $trans_type, $fullName, $APP_NAME, $tran_status, $reference_id)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -691,10 +692,10 @@ class emailMessage{
 </body>
 
 </html>";
-
     }
 
-    public function creditMsg($currency, $amount,$amount_balance,$transfer_type, $fullName, $APP_NAME,$tran_status,$reference_id){
+    public function creditMsg($currency, $amount, $amount_balance, $transfer_type, $fullName, $APP_NAME, $tran_status, $reference_id)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -901,10 +902,10 @@ class emailMessage{
 </body>
 
 </html>";
-
     }
 
-    public function loanMsg($currency,$amount,$amount_balance, $available_loan, $APP_NAME,$tran_status,$messageText){
+    public function loanMsg($currency, $amount, $amount_balance, $available_loan, $APP_NAME, $tran_status, $messageText)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -1105,10 +1106,10 @@ class emailMessage{
 </body>
 
 </html>";
-
     }
 
-    public function wireTransfer($currency,$amount,$crypto_name,$fullName,$APP_NAME){
+    public function wireTransfer($currency, $amount, $crypto_name, $fullName, $APP_NAME)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -1306,7 +1307,8 @@ class emailMessage{
 </html>";
     }
 
-    public function adwireTransfer($currency, $amount,$available_balance,$fullName, $APP_NAME,$tran_status,$bank_name,$acct_name,$acct_number,$acct_country,$created_at,$reference_id,$transfer_type){
+    public function adwireTransfer($currency, $amount, $available_balance, $fullName, $APP_NAME, $tran_status, $bank_name, $acct_name, $acct_number, $acct_country, $created_at, $reference_id, $transfer_type)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -1532,7 +1534,8 @@ class emailMessage{
 
 </html>";
     }
-    public function debitTransaction($currency,$amount,$crypto_name,$fullName,$APP_NAME){
+    public function debitTransaction($currency, $amount, $crypto_name, $fullName, $APP_NAME)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -1729,7 +1732,8 @@ class emailMessage{
 
 </html>";
     }
-    public function creditTransaction($currency,$amount,$crypto_name,$fullName,$APP_NAME){
+    public function creditTransaction($currency, $amount, $crypto_name, $fullName, $APP_NAME)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -1927,7 +1931,8 @@ class emailMessage{
 
 </html>";
     }
-    public function pinRequest($currency,$amount,$fullName,$code,$APP_NAME){
+    public function pinRequest($currency, $amount, $fullName, $code, $APP_NAME)
+    {
         return "<!DOCTYPE html>
 <html>
 
@@ -2289,8 +2294,6 @@ class emailMessage{
 
 </html>";
     }
- 
 }
 
 //USERS CURRENCY
-
